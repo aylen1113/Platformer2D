@@ -3,6 +3,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public int score;
+
+
     void Start()
     {
        
@@ -37,6 +39,7 @@ public class GameController : MonoBehaviour
     {
         //sumar puntaje al conseguir monedas
     }
+   
 }
     
 
