@@ -22,4 +22,8 @@ public class PigBoss : MonoBehaviour
     {
         
     }
+    private void Defeat()
+    {
+        //cargar pantalla de victoria
+    }
 }
