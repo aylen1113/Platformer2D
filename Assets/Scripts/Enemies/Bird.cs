@@ -15,10 +15,19 @@ public class Bird : Enemy
     {
         
     }
-    public override void Attack()
+    public override void Attack(PlayerHealth player)
     {
-       //ataca picoteando
+        if (player != null)
+        {
+            player.TakeDamage(10);
+         
+        }
     }
 
 
+protected override void Die()
+    {
+        base.Die();
+    }
 }
+

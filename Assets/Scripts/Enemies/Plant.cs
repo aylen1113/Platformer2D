@@ -15,8 +15,17 @@ public class Plant : Enemy
     {
         
     }
-    public override void Attack()
+    public override void Attack(PlayerHealth player)
     {
-        //lanza espinas
+        if (player != null)
+        {
+            player.TakeDamage(15);
+
+        }
+    }
+
+    protected override void Die()
+    {
+        base.Die();
     }
 }

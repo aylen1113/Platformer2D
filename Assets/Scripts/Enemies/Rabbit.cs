@@ -18,9 +18,19 @@ public class Rabbit : Enemy
         
     }
 
-    public override void Attack()
+    public override void Attack(PlayerHealth player)
     {
-        //ataca al saltar
+        if (player != null)
+        {
+            player.TakeDamage(20);
+
+        }
+    }
+
+    protected override void Die()
+    {
+        base.Die();
     }
 }
+
 
