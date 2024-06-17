@@ -3,25 +3,17 @@ using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+public class Coin : Collectible
+{
+    public int value;
+
+
+    public override void Collect()
     {
-        
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (gameObject.CompareTag("Player"))
-            {
-            //destruir moneda
-           //sumar puntaje en GameManager
-        }
+        // Aumentar el contador de monedas del jugador
+        //GameManager.instance.AddCoins(value);
+
     }
 }
+
