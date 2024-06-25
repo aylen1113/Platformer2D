@@ -4,30 +4,67 @@ using UnityEngine;
 
 public class Bird : Enemy
 {
+    public float diveSpeed = 5f; 
+    public float attackCooldown = 3f; 
+    private float lastAttackTime = 0f;
+    public int damage = 10; 
+
+    private Transform playerTransform;
+    private bool isDiving = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    public override void Attack(PlayerHealth player)
-    {
-        if (player != null)
+        if (Time.time > lastAttackTime + attackCooldown && !isDiving)
         {
-            player.TakeDamage(10);
-         
+            StartCoroutine(DiveAttack());
         }
     }
 
+    public override void Attack(PlayerHealth player)
+    {
+        base.Attack(player);
+        player.TakeDamage(damage);
+    }
 
-protected override void Die()
+    IEnumerator DiveAttack()
+    {
+        isDiving = true;
+
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = playerTransform.position;
+
+        float diveDuration = Vector3.Distance(startPosition, targetPosition) / diveSpeed;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < diveDuration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / diveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+        lastAttackTime = Time.time;
+        isDiving = false;
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isDiving && collision.gameObject.CompareTag("Player"))
+        {
+            base.OnCollisionEnter2D(collision);
+        }
+    }
+
+    protected override void Die()
     {
         base.Die();
     }
 }
-

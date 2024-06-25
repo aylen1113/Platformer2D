@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -22,9 +24,22 @@ public class Enemy : MonoBehaviour, IDamageable
     {
 
     }
- 
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+            if (player != null)
+            {
+                Attack(player);
+            }
+        }
+    }
+
     public virtual void Attack(PlayerHealth player)
     {
+
         if (player != null)
         {
             player.TakeDamage(attackDamage);
