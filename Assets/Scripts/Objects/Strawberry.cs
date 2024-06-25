@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Strawberry : PowerUp
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float invincibilityDuration = 5f; // Duration of invincibility
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public override void ApplyPowerup()
     {
-        //invencible temporalmente
+        PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            StartCoroutine(GrantInvincibility(playerHealth));
+        }
+    }
+
+    private IEnumerator GrantInvincibility(PlayerHealth playerHealth)
+    {
+        playerHealth.isInvincible = true;
+        yield return new WaitForSeconds(invincibilityDuration);
+        playerHealth.isInvincible = false;
     }
 }

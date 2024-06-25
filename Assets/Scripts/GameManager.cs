@@ -1,8 +1,8 @@
 using UnityEngine;
-
-public class GameController : MonoBehaviour
+using UnityEngine.UI;
+public class GameManager : MonoBehaviour
 {
-    public int score;
+ 
 
    
     public GameObject birdPrefab;
@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     public GameObject strawberryPrefab;
 
 
+    public Text coinText;
+    public int counter;
 
     void Start()
     {
@@ -47,8 +49,22 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void AddScore()
+    public void CoinText(int add)
     {
-        // Add score logic here
+        counter += add;
+        coinText.text = "COINS: " + counter ; 
+
     }
+
+    public void OnEnable()
+    {
+        Coin.coinEvent += CoinText;
+
+    }
+    public void OnDisable()
+    {
+        Coin.coinEvent -= CoinText;
+
+    }
+
 }

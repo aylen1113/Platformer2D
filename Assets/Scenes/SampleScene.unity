@@ -343,6 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 10
+  speed: 5
 --- !u!61 &1624389784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -445,6 +446,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2089a0c1602661a4bbe748de06c30d06, type: 3}
+--- !u!1001 &5133763640559775416
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679403921265932490, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763219685288199817, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
+      propertyPath: m_Name
+      value: PigBoss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c5b39041858c6d458e1c4f45854ab68, type: 3}
 --- !u!1001 &5273589522035178024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -459,7 +517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7167528075272813362, guid: 92ca97ad0eb965d49a062a4a469aca09, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.849
       objectReference: {fileID: 0}
     - target: {fileID: 7167528075272813362, guid: 92ca97ad0eb965d49a062a4a469aca09, type: 3}
       propertyPath: m_LocalPosition.y
@@ -742,3 +800,4 @@ SceneRoots:
   - {fileID: 8812867300010881933}
   - {fileID: 2495171092269794126}
   - {fileID: 6301747667375123785}
+  - {fileID: 5133763640559775416}

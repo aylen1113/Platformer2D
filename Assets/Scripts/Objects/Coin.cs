@@ -1,19 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.Events;
 
 
-public class Coin : Collectible
+public class Coin : MonoBehaviour, ICollectable
 {
-    public int value;
+    //public static event System.Action<int> CoinEvent; 
 
+    public delegate void CoinEvent(int add);
 
-    public override void Collect()
+    public static CoinEvent coinEvent;
+
+    public int value = 1;
+    private int add = 1;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // Aumentar el contador de monedas del jugador
-        //GameManager.instance.AddCoins(value);
+        if (other.CompareTag("Player"))
+        {
+            Collect();
+        }
+    }
 
+    public void Collect()
+    {
+       
+        coinEvent?.Invoke(add);
+        Destroy(this.gameObject);
     }
 }
-
