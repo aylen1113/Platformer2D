@@ -2,28 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class PlayerHealth : MonoBehaviour
 {
-    private int health = 100;
+    public int health = 100;
+    public bool isInvincible = false;
 
-    public int GetHealth()
+    public void TakeDamage(int amount)
     {
-        return health;
-    }
-
-    public void TakeDamage(int damage)
-    {
-
-    
-     if (health <= 0)
+        if (!isInvincible)
         {
-
-          //pantalla game over
-}
+            health -= amount;
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
     }
-    public void Heal(int amount)
+
+    void Die()
     {
-        //curar
+      
+     //pantalla game over 
     }
 }
-

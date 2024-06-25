@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Orange : PowerUp
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speedIncreaseAmount = 5f; 
+    public float duration = 5f; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public override void ApplyPowerup()
     {
-        //aumenta velocidad 
+        PlayerMovement playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            StartCoroutine(IncreaseSpeed(playerMovement));
+        }
+    }
+
+    private IEnumerator IncreaseSpeed(PlayerMovement playerMovement)
+    {
+        playerMovement.speed += speedIncreaseAmount;
+        yield return new WaitForSeconds(duration);
+        playerMovement.speed -= speedIncreaseAmount;
     }
 }

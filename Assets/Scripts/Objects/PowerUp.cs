@@ -2,22 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public abstract class PowerUp : MonoBehaviour, ICollectable
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+    public void Collect()
     {
-        
+        ApplyPowerup();
+        Destroy(gameObject); 
     }
 
-    // Update is called once per frame
-    void Update()
+    public abstract void ApplyPowerup();
+
+  
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-    public virtual void ApplyPowerup()
-    {
-    
+        if (other.CompareTag("Player"))
+        {
+            PlayerCollectPowerup(other.gameObject);
+        }
     }
 
+    protected virtual void PlayerCollectPowerup(GameObject player)
+    {
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            ApplyPowerup(); 
+            Destroy(gameObject); 
+        }
+    }
 }

@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Apple : PowerUp
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int healthRestoreAmount = 20;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public override void ApplyPowerup()
     {
-        //restaurar salud
+        PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(-healthRestoreAmount); 
+        }
     }
 }
