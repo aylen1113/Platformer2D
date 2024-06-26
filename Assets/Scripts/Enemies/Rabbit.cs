@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Rabbit : Enemy
 {
-    public float jumpForce = 5f; 
-    public float attackCooldown = 2f; 
-    private float lastAttackTime = 0f;
-    private bool isJumping = false;
+    protected float jumpForce = 5f; 
+    protected float attackCooldown = 2f; 
+    protected float lastAttackTime = 0f;
+    protected bool isJumping = false;
     public int damage = 10; 
 
     private Rigidbody2D rb;

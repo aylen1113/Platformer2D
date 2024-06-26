@@ -5,8 +5,8 @@ using UnityEngine;
 public class Plant : Enemy
 {
 
-    //public GameObject spinePrefab; 
-    //public Transform firePoint; 
+    //protected GameObject spinePrefab; 
+    //protected Transform firePoint; 
    
     public override void Attack(PlayerHealth player)
     {

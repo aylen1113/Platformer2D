@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Bird : Enemy
 {
-    public float diveSpeed = 5f; 
-    public float attackCooldown = 3f; 
-    private float lastAttackTime = 0f;
-    public int damage = 10; 
+    protected float diveSpeed = 5f; 
+    protected float attackCooldown = 3f; 
+    protected float lastAttackTime = 0f;
+    protected int damage = 10; 
 
     private Transform playerTransform;
     private bool isDiving = false;

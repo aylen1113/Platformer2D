@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13537d1fef24cb0458e0e695dadfa511
+guid: bdbd3aefabe50c0489b1124e9b404f0d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Terrain (16x16)_0
+      name: coin1_16x16_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 80
-        height: 48
+        x: 1
+        y: 1
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e55b04f4abebd8945b6e6b3fb68de448
-      internalID: 1001405518
+      spriteID: 3249ab0b3aee39148b5a9ca019609e06
+      internalID: -2008071507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_1
+      name: coin1_16x16_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
-        width: 80
-        height: 48
+        x: 18
+        y: 1
+        width: 13
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 700fa5657025fcc45a0e738ba900bbfa
-      internalID: -1961251345
+      spriteID: c8cc5134049ba52409616f86f6c6796d
+      internalID: 482706787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_2
+      name: coin1_16x16_2
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 48
+        x: 34
+        y: 1
+        width: 12
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad387e7b7c8bac14682a61caca3e9698
-      internalID: 2140380615
+      spriteID: 060af326b2711c74796ded6c43efba8f
+      internalID: 2035813708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_3
+      name: coin1_16x16_3
       rect:
         serializedVersion: 2
-        x: 272
-        y: 171
-        width: 48
-        height: 5
+        x: 51
+        y: 1
+        width: 11
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10ee0aa8292c4af439c632a0f1fa2f57
-      internalID: 387637407
+      spriteID: 8b3b90799465a7947b7fbd6c961c5ba2
+      internalID: -1703989109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_4
+      name: coin1_16x16_4
       rect:
         serializedVersion: 2
-        x: 272
-        y: 155
-        width: 48
-        height: 5
+        x: 67
+        y: 1
+        width: 10
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 968de390c61f90a44a31278442af387c
-      internalID: 465047785
+      spriteID: 90eaba30a44adf3489e3de383b8739c4
+      internalID: -1328768356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_5
+      name: coin1_16x16_5
       rect:
         serializedVersion: 2
-        x: 272
-        y: 139
-        width: 48
-        height: 5
+        x: 83
+        y: 1
+        width: 9
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b699382d32dc9f4e925a2374f14c957
-      internalID: 479305178
+      spriteID: dbddfa93e887b614694dda631f394c87
+      internalID: -1625238808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_6
+      name: coin1_16x16_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 80
-        height: 48
+        x: 100
+        y: 1
+        width: 7
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5093922af15ae2408788eec322550d8
-      internalID: 2083408191
+      spriteID: e3f63b1c93ec4924fadfe3d6723c8b8e
+      internalID: -395250517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_7
+      name: coin1_16x16_7
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
-        width: 80
-        height: 48
+        x: 117
+        y: 1
+        width: 5
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaab9755ec1be1448986620902c55a56
-      internalID: 2076770484
+      spriteID: 52ab29502f5bc16448d4812b75ca94fd
+      internalID: 96479744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_8
+      name: coin1_16x16_8
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 48
+        x: 132
+        y: 1
+        width: 7
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af21e1ff0abc4474c94b279942cf09cd
-      internalID: 1237693402
+      spriteID: bdffe438fcedc1041801a9e528acfaf4
+      internalID: -791413153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_9
+      name: coin1_16x16_9
       rect:
         serializedVersion: 2
-        x: 272
-        y: 64
-        width: 80
-        height: 48
+        x: 147
+        y: 1
+        width: 9
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 502c15a8f84b2f2488fda76fdb943d08
-      internalID: -61003557
+      spriteID: 524f7d6de0ce0734e9d33466af191db1
+      internalID: 1403091171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_10
+      name: coin1_16x16_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 80
-        height: 48
+        x: 163
+        y: 1
+        width: 10
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +321,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e62e868ff77e02c458463a0ff75b79a6
-      internalID: -1975856145
+      spriteID: a5b9d05a1f0ba6b48a253bcb9a87e92a
+      internalID: -1521117878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_11
+      name: coin1_16x16_11
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 80
-        height: 48
+        x: 179
+        y: 1
+        width: 11
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,20 +342,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9abba7859d8ffac4bb81c5cbe5b5f60c
-      internalID: 1878545509
+      spriteID: abbe2c03b592fc84699d106252daff6c
+      internalID: 1434731906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_12
+      name: coin1_16x16_12
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 48
+        x: 194
+        y: 1
+        width: 12
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,20 +363,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 263c5d878c81fac45853422d14b5aadf
-      internalID: 1516623362
+      spriteID: 0dae356eba44c1548acb1ddcdaa371b4
+      internalID: 1057002182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Terrain (16x16)_13
+      name: coin1_16x16_13
       rect:
         serializedVersion: 2
-        x: 272
-        y: 0
-        width: 64
-        height: 48
+        x: 210
+        y: 1
+        width: 13
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,8 +384,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1689c930f422d7a43922e432f6096c34
-      internalID: 1949710842
+      spriteID: a8806da95e9344e4c8afa56481869b81
+      internalID: -873631021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin1_16x16_14
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 1
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6138c5466342648b895c4da0d2e3af
+      internalID: 926252010
       vertices: []
       indices: 
       edges: []
@@ -401,20 +422,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Terrain (16x16)_0: 1001405518
-      Terrain (16x16)_1: -1961251345
-      Terrain (16x16)_10: -1975856145
-      Terrain (16x16)_11: 1878545509
-      Terrain (16x16)_12: 1516623362
-      Terrain (16x16)_13: 1949710842
-      Terrain (16x16)_2: 2140380615
-      Terrain (16x16)_3: 387637407
-      Terrain (16x16)_4: 465047785
-      Terrain (16x16)_5: 479305178
-      Terrain (16x16)_6: 2083408191
-      Terrain (16x16)_7: 2076770484
-      Terrain (16x16)_8: 1237693402
-      Terrain (16x16)_9: -61003557
+      coin1_16x16_0: -2008071507
+      coin1_16x16_1: 482706787
+      coin1_16x16_10: -1521117878
+      coin1_16x16_11: 1434731906
+      coin1_16x16_12: 1057002182
+      coin1_16x16_13: -873631021
+      coin1_16x16_14: 926252010
+      coin1_16x16_2: 2035813708
+      coin1_16x16_3: -1703989109
+      coin1_16x16_4: -1328768356
+      coin1_16x16_5: -1625238808
+      coin1_16x16_6: -395250517
+      coin1_16x16_7: 96479744
+      coin1_16x16_8: -791413153
+      coin1_16x16_9: 1403091171
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

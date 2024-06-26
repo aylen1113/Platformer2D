@@ -5,7 +5,7 @@ using UnityEngine;
 public class Orange : PowerUp
 {
     public float speedIncreaseAmount = 5f; 
-    public float duration = 5f; 
+    protected float duration = 5f; 
 
     public override void ApplyPowerup()
     {

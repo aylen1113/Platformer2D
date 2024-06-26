@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpineProjectile : MonoBehaviour
 {
-    public float speed = 10f;
-    public int damage = 10;
+    protected float speed = 10f;
+    protected int damage = 10;
 
     void Start()
     {

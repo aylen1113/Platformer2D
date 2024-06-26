@@ -8,7 +8,7 @@ public class PigBoss : MonoBehaviour
     public int health = 500; 
     public int damage = 50; 
     public float attackCooldown = 2f; 
-    private float lastAttackTime = 0f;
+    protected float lastAttackTime = 0f;
 
     private Transform playerTransform;
     private bool isDefeated = false;
