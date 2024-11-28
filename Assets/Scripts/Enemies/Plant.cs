@@ -5,23 +5,30 @@ using UnityEngine;
 public class Plant : Enemy
 {
 
-    //protected GameObject spinePrefab; 
-    //protected Transform firePoint; 
-   
+    public GameObject spinePrefab;
+    [SerializeField] protected Transform firePoint;
+
+
+
+    private void Update()
+    {
+        base.Movement();
+    }
     public override void Attack(PlayerHealth player)
     {
+
         base.Attack(player);
         ThrowSpine(player);
     }
 
     void ThrowSpine(PlayerHealth player)
     {
- 
-        //GameObject spine = Instantiate(spinePrefab, firePoint.position, firePoint.rotation);
 
-       
-        //Vector3 direction = (player.transform.position - firePoint.position).normalized;
-        //spine.transform.forward = direction;
+        GameObject spine = Instantiate(spinePrefab, firePoint.position, firePoint.rotation);
+
+
+        Vector3 direction = (player.transform.position - firePoint.position).normalized;
+        spine.transform.forward = direction;
     }
 
     protected override void Die()

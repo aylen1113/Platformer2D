@@ -10,20 +10,19 @@ public class Rabbit : Enemy
     protected bool isJumping = false;
     public int damage = 10; 
 
-    private Rigidbody2D rb;
-
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     void Update()
-    {
+    {  
         if (Time.time > lastAttackTime + attackCooldown && !isJumping)
         {
             Jump();
         }
+        base.Movement();
+
+        //if (Enemy.groundInfo)
+        //{
+        //    Spin();
+        //}
+
     }
 
     public override void Attack(PlayerHealth player)

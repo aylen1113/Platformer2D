@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5430335623763423518}
   - component: {fileID: 1018375463635362831}
   - component: {fileID: -919438891784242541}
+  - component: {fileID: -6685248197176992328}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -170,4 +171,26 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!195 &-6685248197176992328
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718557920713452009}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.15
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.23
+  m_BaseOffset: 0.115
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

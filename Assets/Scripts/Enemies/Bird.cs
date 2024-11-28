@@ -21,6 +21,7 @@ public class Bird : Enemy
     // Update is called once per frame
     void Update()
     {
+        base.Movement();
         if (Time.time > lastAttackTime + attackCooldown && !isDiving)
         {
             StartCoroutine(DiveAttack());
