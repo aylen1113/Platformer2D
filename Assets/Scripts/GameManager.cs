@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
-    //public GameObject birdPrefab;
     public GameObject plantPrefab;
     public GameObject rabbitPrefab;
 
@@ -16,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Transform[] spawnPoints; // Array to hold spawn points
     public float spawnDistance = 5f; // Distance at which enemies spawn near the player
     public float navMeshSampleRange = 1.0f; // Range to find a valid NavMesh position
+    public float spawnInterval = 10f; // Time interval between spawns
 
     public Text coinText;
     public int counter;
@@ -39,29 +39,28 @@ public class GameManager : MonoBehaviour
             powerUp.ApplyPowerup();
         }
 
-        // Start checking for player proximity to spawn points
-        StartCoroutine(CheckSpawnPoints());
+        // Start spawn management
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            StartCoroutine(SpawnEnemyAtPoint(spawnPoint));
+        }
     }
 
-    private IEnumerator CheckSpawnPoints()
+    private IEnumerator SpawnEnemyAtPoint(Transform spawnPoint)
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f); // Check every second
-
-            foreach (Transform spawnPoint in spawnPoints)
+            float distanceToPlayer = Vector3.Distance(spawnPoint.position, player.transform.position);
+            if (distanceToPlayer <= spawnDistance)
             {
-                float distanceToPlayer = Vector3.Distance(spawnPoint.position, player.transform.position);
-                if (distanceToPlayer <= spawnDistance)
+                Vector3? validPosition = GetNavMeshPosition(spawnPoint.position);
+                if (validPosition.HasValue)
                 {
-                    Vector3? validPosition = GetNavMeshPosition(spawnPoint.position);
-                    if (validPosition.HasValue)
-                    {
-                        SpawnEnemiesAtPoint(validPosition.Value);
-                        spawnPoint.gameObject.SetActive(false); // Deactivate the spawn point after spawning
-                    }
+                    SpawnRandomEnemy(validPosition.Value);
                 }
             }
+
+            yield return new WaitForSeconds(spawnInterval); // Wait for the interval before checking again
         }
     }
 
@@ -79,19 +78,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemiesAtPoint(Vector3 spawnPosition)
+    private void SpawnRandomEnemy(Vector3 spawnPosition)
     {
-        Enemy[] enemies = new Enemy[]
-        {
-            //Instantiate(birdPrefab, spawnPosition, Quaternion.identity).GetComponent<Bird>(),
-            Instantiate(plantPrefab, spawnPosition, Quaternion.identity).GetComponent<Plant>(),
-            Instantiate(rabbitPrefab, spawnPosition, Quaternion.identity).GetComponent<Rabbit>()
-        };
+        GameObject[] enemyPrefabs = new GameObject[] { plantPrefab, rabbitPrefab };
+        GameObject randomEnemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-        foreach (Enemy enemy in enemies)
-        {
-            enemy.Attack(player);
-        }
+        Enemy enemy = Instantiate(randomEnemyPrefab, spawnPosition, Quaternion.identity).GetComponent<Enemy>();
+        enemy.Attack(player);
     }
 
     public void CoinText(int add)

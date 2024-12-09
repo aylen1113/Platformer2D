@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypeName: 
+  coinPrefab: {fileID: 3070887101455194235, guid: ae5f09693d70a8e4989e324a1a0b45aa, type: 3}
   damage: 10
 --- !u!50 &2605332046719309356
 Rigidbody2D:
@@ -117,7 +118,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

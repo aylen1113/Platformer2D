@@ -22,9 +22,10 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Transform target;
     protected NavMeshAgent agent;
 
-    private EnemySpawner spawner;
-
     public string enemyTypeName;
+
+    public GameObject coinPrefab;
+
 
     //[Header("Patrol Points")]
     //[SerializeField] private Transform leftEdge;
@@ -47,7 +48,11 @@ public class Enemy : MonoBehaviour, IDamageable
         player = GetComponent<PlayerHealth>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
-        spawner = FindObjectOfType<EnemySpawner>();
+        
+
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
 
     }
     private void Awake()
@@ -115,7 +120,8 @@ public class Enemy : MonoBehaviour, IDamageable
    
         Debug.Log(gameObject.name + " died.");
         Destroy(gameObject);
-        spawner.ReturnEnemyToPool(gameObject, enemyTypeName);
+        //spawner.ReturnEnemyToPool(gameObject, enemyTypeName);
+        Instantiate(coinPrefab, transform.position, Quaternion.identity);
 
     }
 }

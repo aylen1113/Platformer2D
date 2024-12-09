@@ -17,8 +17,14 @@ public class Strawberry : PowerUp
 
     private IEnumerator GrantInvincibility(PlayerHealth playerHealth)
     {
+        if (playerHealth.isInvincible)
+            yield break;
+
+        Debug.Log("Invincibility ON");
         playerHealth.isInvincible = true;
         yield return new WaitForSeconds(invincibilityDuration);
         playerHealth.isInvincible = false;
+        Debug.Log("Invincibility OFF");
     }
+
 }

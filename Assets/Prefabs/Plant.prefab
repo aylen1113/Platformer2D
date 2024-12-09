@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypeName: 
+  coinPrefab: {fileID: 3070887101455194235, guid: ae5f09693d70a8e4989e324a1a0b45aa, type: 3}
   spinePrefab: {fileID: 3611782724787398926, guid: 501e1baf0a077954180ad6e3f3c0c922, type: 3}
   firePoint: {fileID: 6127844062264268226}
 --- !u!50 &8724906770156656577
@@ -150,7 +151,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

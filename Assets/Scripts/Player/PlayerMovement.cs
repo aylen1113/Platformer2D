@@ -42,6 +42,13 @@ public class PlayerMovement : MonoBehaviour
         float moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
+
+        // cambiar la dirección 
+        if (moveInput > 0.01f)
+            transform.localScale = new Vector3(4, 4, 4); 
+        else if (moveInput < -0.01f)
+            transform.localScale = new Vector3(-4, 4, 4); 
+
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce);
