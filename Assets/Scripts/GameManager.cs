@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject plantPrefab;
     public GameObject rabbitPrefab;
+    public GameObject duckPrefab;
 
     public GameObject applePrefab;
     public GameObject orangePrefab;
@@ -26,24 +27,13 @@ public class GameManager : MonoBehaviour
     {
         player = FindObjectOfType<PlayerHealth>();
 
-        // Initialize power-ups (this runs once at the start)
-        PowerUp[] powerUps = new PowerUp[]
-        {
-            Instantiate(applePrefab).GetComponent<Apple>(),
-            Instantiate(orangePrefab).GetComponent<Orange>(),
-            Instantiate(strawberryPrefab).GetComponent<Strawberry>()
-        };
 
-        foreach (PowerUp powerUp in powerUps)
-        {
-            powerUp.ApplyPowerup();
-        }
-
-        // Start spawn management
         foreach (Transform spawnPoint in spawnPoints)
         {
             StartCoroutine(SpawnEnemyAtPoint(spawnPoint));
         }
+
+
     }
 
     private IEnumerator SpawnEnemyAtPoint(Transform spawnPoint)
@@ -80,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnRandomEnemy(Vector3 spawnPosition)
     {
-        GameObject[] enemyPrefabs = new GameObject[] { plantPrefab, rabbitPrefab };
+        GameObject[] enemyPrefabs = new GameObject[] { plantPrefab, rabbitPrefab, duckPrefab };
         GameObject randomEnemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
         Enemy enemy = Instantiate(randomEnemyPrefab, spawnPosition, Quaternion.identity).GetComponent<Enemy>();

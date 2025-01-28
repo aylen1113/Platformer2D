@@ -43,13 +43,12 @@ public class Enemy : MonoBehaviour, IDamageable
         protected set { speed = value; }
     }
 
-    private void Start()
+    public virtual void Start()
     {
         player = GetComponent<PlayerHealth>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
-        
-
+       
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -72,6 +71,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Movement()
     {
+        if (agent != null && agent.enabled)
         {
             agent.SetDestination(target.position);
         }

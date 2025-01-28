@@ -31,13 +31,14 @@ public class Projectile : MonoBehaviour
     {
         if (hit) return;
 
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy != null)
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            enemy.TakeDamage(damage);
+            damageable.TakeDamage(damage);
             hit = true;
             circleCollider.enabled = false;
-            
+            gameObject.SetActive(false);
+
         }
     }
     public void SetDirection(float _direction)

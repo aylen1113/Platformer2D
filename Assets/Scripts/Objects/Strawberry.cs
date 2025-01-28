@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Strawberry : PowerUp
 {
-    public float invincibilityDuration = 5f; // Duration of invincibility
+    public float invincibilityDuration = 5f; 
 
     public override void ApplyPowerup()
     {
@@ -18,13 +18,19 @@ public class Strawberry : PowerUp
     private IEnumerator GrantInvincibility(PlayerHealth playerHealth)
     {
         if (playerHealth.isInvincible)
+        {
+            Debug.Log("invincibilidad ya esta activada");
             yield break;
+        }
 
         Debug.Log("Invincibility ON");
         playerHealth.isInvincible = true;
+
         yield return new WaitForSeconds(invincibilityDuration);
+
         playerHealth.isInvincible = false;
-        Debug.Log("Invincibility OFF");
+        Debug.Log("Invincibility OFF: " + playerHealth.isInvincible);
     }
+
 
 }

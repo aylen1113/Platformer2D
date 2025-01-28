@@ -13,7 +13,7 @@ public class Bird : Enemy
     private bool isDiving = false;
 
     // Start is called before the first frame update
-    void Start()
+  public override void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }

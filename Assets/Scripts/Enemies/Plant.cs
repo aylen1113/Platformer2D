@@ -7,13 +7,21 @@ public class Plant : Enemy
 
     public GameObject spinePrefab;
     [SerializeField] protected Transform firePoint;
+    [SerializeField] protected float fireRate = 2f;
 
 
+    //private void Update()
+    //{
+    //    base.Movement();
+    //}
 
-    private void Update()
+    public override void Start()
     {
-        base.Movement();
+        base.Start(); // Llama al Start de la clase base
+        agent.enabled = false; // Desactiva el NavMeshAgent para que no se mueva
+        StartCoroutine(ContinuousShooting());
     }
+
     public override void Attack(PlayerHealth player)
     {
 
@@ -30,6 +38,19 @@ public class Plant : Enemy
         Vector3 direction = (player.transform.position - firePoint.position).normalized;
         spine.transform.forward = direction;
     }
+
+    private IEnumerator ContinuousShooting()
+    {
+        while (true)
+        {
+            if (player != null)
+            {
+                ThrowSpine(player); // Dispara hacia el jugador
+            }
+            yield return new WaitForSeconds(fireRate); // Espera el tiempo entre disparos
+        }
+    }
+
 
     protected override void Die()
     {

@@ -10,7 +10,11 @@ public class PlayerHealth : MonoBehaviour
     public bool isInvincible = false;
 
     public Slider slider;
-    
+
+    void Start()
+    {
+        SetMaxHealth(health); 
+    }
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -20,18 +24,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        slider.value = health;
-
         if (!isInvincible)
         {
             Debug.Log("Damage");
-            health -= amount;
+            health -= amount; 
+            slider.value = health; 
+
             if (health <= 0)
             {
                 Die();
             }
         }
     }
+
 
     void Die()
     {

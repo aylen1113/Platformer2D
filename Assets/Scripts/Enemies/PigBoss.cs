@@ -1,27 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
-public class PigBoss : MonoBehaviour
+public class PigBoss : MonoBehaviour, IDamageable
 {
-    public int health = 500; 
-    public int damage = 50; 
-    public float attackCooldown = 2f; 
+    public int health = 500;
+    public int damage = 50;
+    public float attackCooldown = 2f;
     protected float lastAttackTime = 0f;
 
-    private Transform playerTransform;
+    private Transform target;
     private bool isDefeated = false;
+    private NavMeshAgent agent;
+
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        agent.SetDestination(target.position);
+
         if (Time.time > lastAttackTime + attackCooldown && !isDefeated)
         {
             Attack();
@@ -31,8 +43,8 @@ public class PigBoss : MonoBehaviour
     private void Attack()
     {
         lastAttackTime = Time.time;
-        
-        PlayerHealth player = playerTransform.GetComponent<PlayerHealth>();
+
+        PlayerHealth player = target.GetComponent<PlayerHealth>();
         if (player != null)
         {
             player.TakeDamage(damage);
@@ -51,12 +63,12 @@ public class PigBoss : MonoBehaviour
     private void Defeat()
     {
         isDefeated = true;
-   
-        Debug.Log("Pig Boss defeated! Loading victory screen...");
+
+        Debug.Log("boss defeated");
         SceneManager.LoadScene("VictoryScreen");
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+   public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
