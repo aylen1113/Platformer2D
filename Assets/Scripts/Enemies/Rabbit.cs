@@ -1,28 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Rabbit : Enemy
 {
-    protected float jumpForce = 5f; 
-    protected float attackCooldown = 2f; 
+    protected float jumpForce = 5f;
+    protected float attackCooldown = 2f;
     protected float lastAttackTime = 0f;
     protected bool isJumping = false;
-    public int damage = 10; 
+    public int damage = 10;
 
-    void Update()
-    {  
+  public override void Update()
+    {
+        base.Update(); // Llama al Update de Enemy para conservar su IA
+
         if (Time.time > lastAttackTime + attackCooldown && !isJumping)
         {
             Jump();
         }
-        base.Movement();
-
-        //if (Enemy.groundInfo)
-        //{
-        //    Spin();
-        //}
-
     }
 
     public override void Attack(PlayerHealth player)
@@ -39,11 +32,7 @@ public class Rabbit : Enemy
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            base.OnCollisionEnter2D(collision);
-        }
-        
+        base.OnCollisionEnter2D(collision);
 
         if (collision.gameObject.CompareTag("Ground"))
         {

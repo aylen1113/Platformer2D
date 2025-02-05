@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8724906770156656577}
   - component: {fileID: -253465831173958984}
   - component: {fileID: 8990768257772628771}
+  - component: {fileID: 21421419069928517}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -136,6 +137,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 3070887101455194235, guid: ae5f09693d70a8e4989e324a1a0b45aa, type: 3}
   spinePrefab: {fileID: 3611782724787398926, guid: 501e1baf0a077954180ad6e3f3c0c922, type: 3}
   firePoint: {fileID: 6127844062264268226}
+  fireRate: 2
 --- !u!50 &8724906770156656577
 Rigidbody2D:
   serializedVersion: 4
@@ -230,3 +232,24 @@ NavMeshAgent:
   m_BaseOffset: 0.19
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &21421419069928517
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2684408889776597631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 13969c84ab6793049a86bdbbcaed3817, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

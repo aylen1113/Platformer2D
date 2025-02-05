@@ -1,10 +1,7 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
+
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class Enemy : MonoBehaviour, IDamageable
 {
@@ -25,6 +22,9 @@ public class Enemy : MonoBehaviour, IDamageable
     public string enemyTypeName;
 
     public GameObject coinPrefab;
+
+    public float chaseRange = 5f;
+    private bool isChasing = false;
 
 
     //[Header("Patrol Points")]
@@ -48,10 +48,16 @@ public class Enemy : MonoBehaviour, IDamageable
         player = GetComponent<PlayerHealth>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
-       
+
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        if (agent.isOnNavMesh)
+        {
+            agent.isStopped = true;
+            agent.speed = 0f;
+        }
 
     }
     private void Awake()
@@ -61,12 +67,28 @@ public class Enemy : MonoBehaviour, IDamageable
         FreezeRotation();
     }
 
-    private void Update()
+    public virtual void Update()
     {
-        Movement();
+        if (!agent.isOnNavMesh) return;
+
+        float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+
+        if (distanceToPlayer <= chaseRange)
+        {
+            isChasing = true;
+            agent.isStopped = false;
+            agent.speed = speed;
+            Movement();
+        }
+        else
+        {
+            isChasing = false;
+            agent.speed = 0f;
+            agent.isStopped = true;
+        }
     }
- 
-    
+
+
 
 
     public virtual void Movement()
@@ -117,7 +139,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Die()
     {
-   
+
         Debug.Log(gameObject.name + " died.");
         Destroy(gameObject);
         //spawner.ReturnEnemyToPool(gameObject, enemyTypeName);

@@ -23,13 +23,9 @@ public class Duck : Enemy
         originalPosition = transform.position; // Guarda la posición inicial
     }
 
-    private void Update()
+    public override void Update()
     {
-        // Si no está atacando, patrulla o permanece en su posición original
-        if (!isAttacking)
-        {
-            base.Movement();
-        }
+        base.Update();
 
         // Inicia el ataque si el cooldown ha pasado
         if (!isAttacking && Time.time >= lastAttackTime + attackCooldown)

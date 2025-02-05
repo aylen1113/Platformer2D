@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1018375463635362831}
   - component: {fileID: -919438891784242541}
   - component: {fileID: -6685248197176992328}
+  - component: {fileID: 894949075318069733}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -196,3 +197,24 @@ NavMeshAgent:
   m_BaseOffset: 0.115
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &894949075318069733
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718557920713452009}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b0a22190e2d81b943a6b7e502c227aa8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

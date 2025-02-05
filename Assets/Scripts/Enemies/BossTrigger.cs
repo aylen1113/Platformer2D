@@ -2,13 +2,26 @@ using UnityEngine;
 
 public class BossTrigger : MonoBehaviour
 {
-    public GameObject pigBossPrefab; // Prefab del PigBoss
-    public Transform spawnPoint; // Punto de aparición del jefe
+    public GameObject pigBossPrefab; 
+    public Transform spawnPoint; 
     private bool bossSpawned = false;
+    public int coinsToSpawnBoss = 10; 
+    private int currentCoins = 0; 
 
-    void OnTriggerEnter2D(Collider2D other)
+    void Start()
     {
-        if (other.CompareTag("Player") && !bossSpawned)
+        Coin.coinEvent += HandleCoinCollected;
+    }
+
+    void OnDestroy()
+    {
+        Coin.coinEvent -= HandleCoinCollected;
+    }
+
+    private void HandleCoinCollected(int add)
+    {
+        currentCoins += add;
+        if (currentCoins >= coinsToSpawnBoss && !bossSpawned)
         {
             SpawnBoss();
         }
@@ -17,10 +30,7 @@ public class BossTrigger : MonoBehaviour
     private void SpawnBoss()
     {
         bossSpawned = true;
-
-        // Instanciar al jefe en el punto de aparición
         Instantiate(pigBossPrefab, spawnPoint.position, Quaternion.identity);
-
-        Debug.Log("Pig Boss has spawned!");
+        Debug.Log("boss spawned");
     }
 }

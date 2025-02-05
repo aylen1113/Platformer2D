@@ -9,11 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private float moveInput;
 
     private Rigidbody2D rb;
+    Animator animator;
     //private bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             grounded = true;
+            animator.SetBool("isJumping", !grounded);
         }
 
     }
@@ -32,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             grounded = false;
+            animator.SetBool("isJumping", !grounded);
         }
 
     }
@@ -41,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-
+        animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("yspeed", rb.velocity.y);
 
         // cambiar la dirección 
         if (moveInput > 0.01f)
