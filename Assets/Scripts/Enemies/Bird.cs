@@ -15,14 +15,32 @@ public class Bird : Enemy
     // Start is called before the first frame update
   public override void Start()
     {
+        base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        base.Movement();
-        if (Time.time > lastAttackTime + attackCooldown && !isDiving)
+        float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+
+        if (distanceToPlayer <= chaseRange) // Solo moverse si el jugador está cerca
+        {
+            base.Movement();
+        }
+
+        CheckGround();
+
+        if (!isGrounded)
+        {
+            agent.isStopped = true;
+        }
+        else if (isChasing)
+        {
+            agent.isStopped = false;
+        }
+
+        if (Time.time > lastAttackTime + attackCooldown && !isDiving && distanceToPlayer <= chaseRange)
         {
             StartCoroutine(DiveAttack());
         }

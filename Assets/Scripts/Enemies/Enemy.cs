@@ -24,7 +24,10 @@ public class Enemy : MonoBehaviour, IDamageable
     public GameObject coinPrefab;
 
     public float chaseRange = 5f;
-    private bool isChasing = false;
+    protected bool isChasing = false;
+
+    protected bool isGrounded;
+
 
 
     //[Header("Patrol Points")]
@@ -52,6 +55,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.autoTraverseOffMeshLink = false;
 
         if (agent.isOnNavMesh)
         {
@@ -135,6 +139,11 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Die();
         }
+    }
+   protected virtual void CheckGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.GetMask("Ground"));
+        isGrounded = hit.collider != null;
     }
 
     protected virtual void Die()

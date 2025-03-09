@@ -27,6 +27,17 @@ public class Duck : Enemy
     {
         base.Update();
 
+        CheckGround();
+
+        if (!isGrounded)
+        {
+            agent.isStopped = true;
+        }
+        else if (isChasing)
+        {
+            agent.isStopped = false;
+        }
+
         // Inicia el ataque si el cooldown ha pasado
         if (!isAttacking && Time.time >= lastAttackTime + attackCooldown)
         {

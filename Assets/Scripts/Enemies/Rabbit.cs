@@ -8,9 +8,32 @@ public class Rabbit : Enemy
     protected bool isJumping = false;
     public int damage = 10;
 
-  public override void Update()
+    private Transform playerTransform;
+    private Vector3 originalPosition;
+
+    [SerializeField] private LayerMask groundLayer;
+
+    public override void Start()
+    {
+        base.Start();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        originalPosition = transform.position; // Guarda la posición inicial
+    }
+    public override void Update()
     {
         base.Update(); // Llama al Update de Enemy para conservar su IA
+
+        CheckGround();
+
+        if (!isGrounded)
+        {
+            agent.isStopped = true;
+        }
+        else if (isChasing)
+        {
+            agent.isStopped = false;
+        }
+
 
         if (Time.time > lastAttackTime + attackCooldown && !isJumping)
         {
@@ -26,8 +49,11 @@ public class Rabbit : Enemy
 
     void Jump()
     {
-        isJumping = true;
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        if (isGrounded) // Ensure it only jumps when grounded
+        {
+            isJumping = true;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce); // More reliable than AddForce
+        }
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
@@ -40,6 +66,16 @@ public class Rabbit : Enemy
             lastAttackTime = Time.time;
         }
     }
+    protected override void CheckGround()
+    {
+        base.CheckGround(); // Call the base class CheckGround() if necessary
+
+        // Custom ground check for Rabbit
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundLayer);
+
+        Debug.DrawRay(transform.position, Vector2.down * 1f, Color.red); // Debugging
+    }
+
 
     protected override void Die()
     {
