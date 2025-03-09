@@ -1,23 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class SpineProjectile : MonoBehaviour
 {
-    protected float speed = 10f;
-    protected int damage = 10;
 
-    void Start()
+    private GameObject player;
+
+
+    //[SerializeField] private float speed = 10f;
+    [SerializeField] private int damage = 10;
+    private Rigidbody2D rb;
+
+    public float force;
+
+    private float timer;
+     void Start()
     {
-        Destroy(gameObject, 3f);
+       rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        Vector3 direction = player.transform.position - transform.position; 
+
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+
+
+        float rot = Mathf.Atan2 (-direction.y, -direction.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, 0, rot);
     }
 
-    void Update()
+ void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        timer += Time.deltaTime;
+
+        if (timer > 5)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void OnTriggerEnter(Collider other)
+
+    //    player = GameObject.FindGameObjectWithTag
+    //    rb = GetComponent<Rigidbody2D>();
+
+    //    if (rb != null)
+    //    {
+    //        rb.velocity = transform.right * speed; // Mueve el proyectil hacia adelante
+    //    }
+
+    //    Destroy(gameObject, 3f); // Se destruye después de 3 segundos
+    //}
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         PlayerHealth player = other.GetComponent<PlayerHealth>();
         if (player != null)
