@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136019adef88a4c44912e9582702889b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityDuration: 5
+  effectApplied: 0
+  jumpForceMultiplier: 1.5
 --- !u!58 &-5161589692640987007
 CircleCollider2D:
   m_ObjectHideFlags: 0

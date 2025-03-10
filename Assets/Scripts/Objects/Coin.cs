@@ -26,5 +26,6 @@ public class Coin : MonoBehaviour, ICollectable
        
         coinEvent?.Invoke(add);
         Destroy(this.gameObject);
-    }
+    
+}
 }

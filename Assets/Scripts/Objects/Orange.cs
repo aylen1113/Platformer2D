@@ -1,25 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Orange : PowerUp
 {
-    public float speedIncreaseAmount = 5f; 
-    protected float duration = 5f; 
+    public float speedMultiplier = 2f;
+    private float originalSpeed = 5;
 
-    public override void ApplyPowerup()
+    public override void ApplyPowerup(PlayerMovement playerMovement)
     {
-        PlayerMovement playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        if (playerMovement != null)
-        {
-            StartCoroutine(IncreaseSpeed(playerMovement));
-        }
+        originalSpeed = playerMovement.speed; // Store the original speed
+        playerMovement.speed *= speedMultiplier; // Increase speed by the multiplier
     }
 
-    private IEnumerator IncreaseSpeed(PlayerMovement playerMovement)
+    protected override void RemovePowerup(PlayerMovement playerMovement)
     {
-        playerMovement.speed += speedIncreaseAmount;
-        yield return new WaitForSeconds(duration);
-        playerMovement.speed -= speedIncreaseAmount;
+        playerMovement.speed = originalSpeed; // Revert to the original speed
     }
 }

@@ -1,36 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Strawberry : PowerUp
 {
-    public float invincibilityDuration = 5f; 
+    public float jumpForceMultiplier = 1.5f;
+    private float originalJumpForce = 7;
 
-    public override void ApplyPowerup()
+    public override void ApplyPowerup(PlayerMovement playerMovement)
     {
-        PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            StartCoroutine(GrantInvincibility(playerHealth));
-        }
+        //originalJumpForce = playerMovement.jumpForce; // Store the original jump force
+        playerMovement.jumpForce *= jumpForceMultiplier; // Increase jump force by the multiplier
     }
 
-    private IEnumerator GrantInvincibility(PlayerHealth playerHealth)
+    protected override void RemovePowerup(PlayerMovement playerMovement)
     {
-        if (playerHealth.isInvincible)
-        {
-            Debug.Log("invincibilidad ya esta activada");
-            yield break;
-        }
-
-        Debug.Log("Invincibility ON");
-        playerHealth.isInvincible = true;
-
-        yield return new WaitForSeconds(invincibilityDuration);
-
-        playerHealth.isInvincible = false;
-        Debug.Log("Invincibility OFF: " + playerHealth.isInvincible);
+        playerMovement.jumpForce = originalJumpForce; // Revert to the original jump force
     }
-
-
 }
