@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - BossHealth
+  - BossProjectile
+  - PigBoss
   layers:
   - Default
   - TransparentFX

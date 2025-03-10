@@ -23,7 +23,15 @@ public class GameManager : MonoBehaviour
 
     private PlayerHealth player;
 
-    void Start()
+    [SerializeField] private GameObject bossProjectilePrefab;
+
+    public GameObject BossProjectilePrefab
+    {
+        get { return bossProjectilePrefab; }
+    }
+
+
+void Start()
     {
         player = FindObjectOfType<PlayerHealth>();
 

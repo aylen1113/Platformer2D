@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Plant : MonoBehaviour
+public class Plant : MonoBehaviour, IDamageable
 {
 
     private GameObject player;
-
+    protected int health = 100;
     public GameObject spinePrefab;
     public Transform spinePos;
     //[SerializeField] protected Transform firePoint;
     [SerializeField] protected float fireRate = 2f;
     //public float spineSpeed = 100f;
-
+    public GameObject coinPrefab;
+    public int Health
+    {
+        get { return health; }
+        protected set { health = value; }
+    }
 
     void Start()
     {
@@ -47,6 +52,25 @@ public class Plant : MonoBehaviour
     {
     Instantiate(spinePrefab, spinePos.position, Quaternion.identity);
 
+}
+
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+ 
+    protected virtual void Die()
+    {
+
+        Debug.Log(gameObject.name + " died.");
+        Destroy(gameObject);
+        Instantiate(coinPrefab, transform.position, Quaternion.identity);
+
+    }
 }
 
 
@@ -95,4 +119,3 @@ public class Plant : MonoBehaviour
     //{
     //    base.Die();
     //}
-}

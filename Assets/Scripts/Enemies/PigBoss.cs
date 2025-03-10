@@ -5,52 +5,71 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
-public class PigBoss : MonoBehaviour, IDamageable
+public class PigBoss :  MonoBehaviour, IDamageable
 {
-    public int health = 500;
-    public int damage = 50;
-    public float attackCooldown = 2f;
-    protected float lastAttackTime = 0f;
+
+    private GameObject player;
+   protected int health = 500;
+    private GameObject bossProjectile;
+    public Transform projectilePos;
+    //[SerializeField] protected Transform firePoint;
+    [SerializeField] protected float fireRate = 2f;
+    //public float spineSpeed = 100f;
+    public GameObject coinPrefab;
 
     private Transform target;
     private bool isDefeated = false;
-    private NavMeshAgent agent;
+
 
 
     // Start is called before the first frame update
+   
+    public int Health
+    {
+        get { return health; }
+        protected set { health = value; }
+    }
+
     public void Start()
     {
+        GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
+        if (gameManager != null)
+        {
+            bossProjectile = gameManager.BossProjectilePrefab;
+        }
+
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
-
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-
+        //bossProjectile = GameObject.FindGameObjectWithTag("BossProjectile");
+        projectilePos = GameObject.FindGameObjectWithTag("PigBoss").transform;
 
     }
-
-    // Update is called once per frame
-    void Update()
+ 
+    
+   void Update()
     {
-        agent.SetDestination(target.position);
+      
 
-        if (Time.time > lastAttackTime + attackCooldown && !isDefeated)
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+
+        if (distance < 5)
         {
-            Attack();
+            fireRate += Time.deltaTime;
+
+            if (fireRate > 2)
+            {
+                fireRate = 0;
+                Shoot();
+            }
+
         }
+
     }
 
-    private void Attack()
+    void Shoot()
     {
-        lastAttackTime = Time.time;
+    Instantiate(bossProjectile, projectilePos.position, Quaternion.identity);
 
-        PlayerHealth player = target.GetComponent<PlayerHealth>();
-        if (player != null)
-        {
-            player.TakeDamage(damage);
-        }
-    }
-
+}
     public void TakeDamage(int amount)
     {
         health -= amount;
@@ -68,15 +87,15 @@ public class PigBoss : MonoBehaviour, IDamageable
         SceneManager.LoadScene("VictoryScreen");
     }
 
-   public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
-            if (player != null)
-            {
-                Attack();
-            }
-        }
-    }
+   //public void OnCollisionEnter2D(Collision2D collision)
+   // {
+   //     if (collision.gameObject.CompareTag("Player"))
+   //     {
+   //         PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+   //         if (player != null)
+   //         {
+   //             Attack();
+   //         }
+   //     }
+   // }
 }
