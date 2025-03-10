@@ -4,42 +4,65 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Health
 {
-    public int health = 100;
     public bool isInvincible = false;
 
-    public Slider slider;
-
-    void Start()
+    private void Awake()
     {
-        SetMaxHealth(health); 
+        maxHealth = 100; 
     }
-    public void SetMaxHealth(int health)
-    {
-        slider.maxValue = health;
-        slider.value = health;
-
-    }
-
-    public void TakeDamage(int amount)
+    public override void TakeDamage(int amount)
     {
         if (!isInvincible)
         {
-            Debug.Log("Damage");
-            health -= amount; 
-            slider.value = health; 
-
-            if (health <= 0)
-            {
-                Die();
-            }
+            Debug.Log("player took damage");
+            base.TakeDamage(amount);
         }
     }
 
-
-    void Die()
+    protected override void Die()
     {
+        Debug.Log("player died");
         SceneManager.LoadScene("GameOver");
     }
 }
+
+
+//    public int health = 100;
+//    public bool isInvincible = false;
+
+//    public Slider slider;
+
+//    void Start()
+//    {
+//        SetMaxHealth(health); 
+//    }
+//    public void SetMaxHealth(int health)
+//    {
+//        slider.maxValue = health;
+//        slider.value = health;
+
+//    }
+
+//    public void TakeDamage(int amount)
+//    {
+//        if (!isInvincible)
+//        {
+//            Debug.Log("Damage");
+//            health -= amount; 
+//            slider.value = health; 
+
+//            if (health <= 0)
+//            {
+//                Die();
+//            }
+//        }
+//    }
+
+
+//    void Die()
+//    {
+//        SceneManager.LoadScene("GameOver");
+//    }
+//}

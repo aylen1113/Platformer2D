@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class BossTrigger : MonoBehaviour
 {
-    public GameObject pigBossPrefab; 
-    public Transform spawnPoint; 
+    public GameObject pigBossPrefab;
+    public Transform spawnPoint;
     private bool bossSpawned = false;
-    public int coinsToSpawnBoss = 10; 
-    private int currentCoins = 0; 
+    public int coinsToSpawnBoss = 10;
+    private int currentCoins = 0;
 
     void Start()
     {
@@ -31,6 +31,7 @@ public class BossTrigger : MonoBehaviour
     {
         bossSpawned = true;
         Instantiate(pigBossPrefab, spawnPoint.position, Quaternion.identity);
+
         Debug.Log("boss spawned");
     }
 }
