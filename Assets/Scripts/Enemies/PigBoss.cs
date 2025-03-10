@@ -30,28 +30,45 @@ public class PigBoss :  MonoBehaviour, IDamageable
         protected set { health = value; }
     }
 
-    public void Start()
+    void Start()
     {
-        GameManager gameManager = GameObject.FindObjectOfType<GameManager>();
+        // Ensure player is assigned
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("PigBoss: No GameObject found with the 'Player' tag! Make sure the player is tagged correctly.");
+        }
+        else
+        {
+            target = player.transform;
+        }
+
+        // Get the projectile prefab from GameManager
+        GameManager gameManager = FindObjectOfType<GameManager>();
         if (gameManager != null)
         {
             bossProjectile = gameManager.BossProjectilePrefab;
         }
+        else
+        {
+            Debug.LogError("PigBoss: GameManager not found in the scene. Make sure a GameManager exists.");
+        }
 
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        //bossProjectile = GameObject.FindGameObjectWithTag("BossProjectile");
-        projectilePos = GameObject.FindGameObjectWithTag("PigBoss").transform;
-
+        // Ensure projectilePos is assigned
+        if (projectilePos == null)
+        {
+            Debug.LogWarning("PigBoss: projectilePos is not assigned in the Inspector. Please assign a valid Transform.");
+        }
     }
- 
-    
-   void Update()
+
+
+    void Update()
     {
       
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < 5)
+        if (distance < 10)
         {
             fireRate += Time.deltaTime;
 
@@ -67,9 +84,35 @@ public class PigBoss :  MonoBehaviour, IDamageable
 
     void Shoot()
     {
-    Instantiate(bossProjectile, projectilePos.position, Quaternion.identity);
+        if (bossProjectile == null)
+        {
+            Debug.LogError("PigBoss: bossProjectile is not assigned!");
+            return;
+        }
 
-}
+        if (projectilePos == null)
+        {
+            Debug.LogError("PigBoss: projectilePos is not assigned!");
+            return;
+        }
+
+        // Calculate direction
+        Vector3 direction = (player.transform.position - projectilePos.position).normalized;
+
+        // Instantiate the projectile
+        GameObject projectile = Instantiate(bossProjectile, projectilePos.position, Quaternion.identity);
+
+        // Rotate the projectile to face the player
+        projectile.transform.right = direction; // Assumes the projectile's forward direction is along the X-axis
+
+        // Apply movement to the projectile (if it has Rigidbody)
+        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = direction * 5f; // Adjust speed as needed
+        }
+    }
+
     public void TakeDamage(int amount)
     {
         health -= amount;

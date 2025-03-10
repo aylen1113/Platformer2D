@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6770679425966516988}
   - component: {fileID: -606634555500756553}
   - component: {fileID: -6107745154281681414}
+  - component: {fileID: 7977634621621379625}
   m_Layer: 0
   m_Name: PigBoss
   m_TagString: Untagged
@@ -113,7 +114,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!61 &-606634555500756553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +172,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6d58b0eb4ce914db2b6c7dfa68d23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossProjectile: {fileID: 2146052396056687945, guid: d7f68da1a3af53c438b05f4f59e66203, type: 3}
   projectilePos: {fileID: 5679403921265932490}
   fireRate: 2
   coinPrefab: {fileID: 3070887101455194235, guid: ae5f09693d70a8e4989e324a1a0b45aa, type: 3}
+--- !u!95 &7977634621621379625
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763219685288199817}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cfd178975741efb44b5f35525a710029, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
