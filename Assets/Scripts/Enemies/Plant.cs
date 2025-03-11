@@ -23,7 +23,6 @@ public class Plant : MonoBehaviour, IDamageable
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
       
     }
  
@@ -31,7 +30,6 @@ public class Plant : MonoBehaviour, IDamageable
    void Update()
     {
       
-
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
         if (distance < 5)

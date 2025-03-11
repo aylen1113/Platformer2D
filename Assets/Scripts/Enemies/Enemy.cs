@@ -19,13 +19,12 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Transform target;
     protected NavMeshAgent agent;
 
-    public string enemyTypeName;
 
     public GameObject coinPrefab;
 
     public float chaseRange = 5f;
-    protected bool isChasing = false;
 
+    protected bool isChasing = false;
     protected bool isGrounded;
 
 

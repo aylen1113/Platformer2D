@@ -1,30 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Powerups : MonoBehaviour, ICollectable
 {
     [SerializeField] protected float duracionDeEfecto;
-    [SerializeField] protected GameObject jugador;
     [SerializeField] protected int valorAgregado;
     [SerializeField] public bool efectoActivado;
     [SerializeField] protected SpriteRenderer spriteRenderer;
 
-
-
+    protected GameObject jugador;
+    protected PlayerMovement playerMovement;
 
     protected void Start()
     {
         jugador = GameObject.FindGameObjectWithTag("Player");
-        efectoActivado = true;
+        if (jugador != null)
+        {
+            playerMovement = jugador.GetComponent<PlayerMovement>();
+        }
+        efectoActivado = false;
     }
-
 
     protected abstract void aplicar();
 
-
     protected IEnumerator DuracionDePowerUp()
     {
+        if (playerMovement == null) yield break;
+
         efectoActivado = true;
         aplicar();
 
@@ -32,8 +34,8 @@ public abstract class Powerups : MonoBehaviour, ICollectable
 
         efectoActivado = false;
         aplicar();
-        Collect();
 
+        Collect(); 
     }
 
     public void Collect()
@@ -43,14 +45,10 @@ public abstract class Powerups : MonoBehaviour, ICollectable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !efectoActivado)
         {
-
             spriteRenderer.enabled = false;
-
-            StartCoroutine("DuracionDePowerUp");
-
+            StartCoroutine(DuracionDePowerUp());
         }
     }
 }
