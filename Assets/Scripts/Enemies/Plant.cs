@@ -10,9 +10,9 @@ public class Plant : MonoBehaviour, IDamageable
     protected int health = 100;
     public GameObject spinePrefab;
     public Transform spinePos;
-    //[SerializeField] protected Transform firePoint;
+
     [SerializeField] protected float fireRate = 2f;
-    //public float spineSpeed = 100f;
+
     public GameObject coinPrefab;
     public int Health
     {
@@ -72,50 +72,3 @@ public class Plant : MonoBehaviour, IDamageable
 
     }
 }
-
-
-    //public override void Start()
-    //{
-    //    base.Start();
-    //    agent.enabled = false; // La planta no se mueve
-    //    player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerHealth>(); // Asigna el jugador
-    //    StartCoroutine(ContinuousShooting());
-    //}
-
-    //public override void Attack(PlayerHealth player)
-    //{
-
-    //    base.Attack(player);
-    //    ThrowSpine(player);
-    //}
-
-    //void ThrowSpine(PlayerHealth player)
-    //{
-    //    GameObject spine = Instantiate(spinePrefab, firePoint.position, firePoint.rotation);
-    //    Vector3 direction = (player.transform.position - firePoint.position).normalized;
-
-    //    Rigidbody2D rb = spine.GetComponent<Rigidbody2D>();
-    //    if (rb != null)
-    //    {
-
-    //        rb.velocity = direction * spineSpeed;
-    //    }
-    //}
-
-    //private IEnumerator ContinuousShooting()
-    //{
-    //    while (true)
-    //    {
-    //        if (player != null)
-    //        {
-    //            ThrowSpine(player); // Dispara hacia el jugador
-    //        }
-    //        yield return new WaitForSeconds(fireRate); // Espera el tiempo entre disparos
-    //    }
-    //}
-
-
-    //protected override void Die()
-    //{
-    //    base.Die();
-    //}

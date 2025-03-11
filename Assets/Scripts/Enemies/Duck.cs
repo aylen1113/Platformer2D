@@ -4,15 +4,15 @@ using UnityEngine;
 public class Duck : Enemy
 
 {
-    [SerializeField] private float flyHeight = 5f; // Altura a la que el pato vuela antes de atacar
-    [SerializeField] private float diveSpeed = 7f; // Velocidad de la picada
-    [SerializeField] private float returnSpeed = 3f; // Velocidad de regreso a su posición inicial
-    [SerializeField] private float attackCooldown = 4f; // Tiempo entre ataques
-    [SerializeField] private int damage = 15; // Daño al jugador
+    [SerializeField] private float flyHeight = 5f; 
+    [SerializeField] private float diveSpeed = 7f; 
+    [SerializeField] private float returnSpeed = 3f; 
+    [SerializeField] private float attackCooldown = 4f; 
+    [SerializeField] private int damage = 15; 
 
-    private Vector3 originalPosition; // Posición inicial del pato
+    private Vector3 originalPosition; 
     private Transform playerTransform;
-    private bool isAttacking = false; // Evita que realice múltiples ataques a la vez
+    private bool isAttacking = false; 
 
     private float lastAttackTime = 0f;
 
@@ -20,7 +20,7 @@ public class Duck : Enemy
     {
         base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        originalPosition = transform.position; // Guarda la posición inicial
+        originalPosition = transform.position; 
     }
 
     public override void Update()
@@ -38,7 +38,7 @@ public class Duck : Enemy
             agent.isStopped = false;
         }
 
-        // Inicia el ataque si el cooldown ha pasado
+
         if (!isAttacking && Time.time >= lastAttackTime + attackCooldown)
         {
             StartCoroutine(DiveAttack());
@@ -49,17 +49,17 @@ public class Duck : Enemy
     {
         isAttacking = true;
 
-        // Paso 1: Elevarse hacia arriba
+    
         Vector3 flyPosition = originalPosition + Vector3.up * flyHeight;
         yield return MoveToPosition(flyPosition, returnSpeed);
 
-        // Paso 2: Realizar picada hacia el jugador
+      
         if (playerTransform != null)
         {
             Vector3 targetPosition = playerTransform.position;
             yield return MoveToPosition(targetPosition, diveSpeed);
 
-            // Verificar colisión con el jugador para aplicar daño
+      
             if (Vector3.Distance(transform.position, playerTransform.position) < 1f)
             {
                 PlayerHealth player = playerTransform.GetComponent<PlayerHealth>();
@@ -70,10 +70,10 @@ public class Duck : Enemy
             }
         }
 
-        // Paso 3: Regresar a la posición inicial
+     
         yield return MoveToPosition(originalPosition, returnSpeed);
 
-        // Finalizar ataque y reiniciar el cooldown
+     
         lastAttackTime = Time.time;
         isAttacking = false;
     }

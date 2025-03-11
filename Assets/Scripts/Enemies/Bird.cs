@@ -12,19 +12,18 @@ public class Bird : Enemy
     private Transform playerTransform;
     private bool isDiving = false;
 
-    // Start is called before the first frame update
+
   public override void Start()
     {
         base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
     public override void Update()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
-        if (distanceToPlayer <= chaseRange) // Solo moverse si el jugador está cerca
+        if (distanceToPlayer <= chaseRange) 
         {
             base.Movement();
         }

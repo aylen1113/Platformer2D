@@ -10,17 +10,13 @@ public class PigBoss : MonoBehaviour, IDamageable
     protected int health = 500;
     private GameObject bossProjectile;
     public Transform projectilePos;
-    //[SerializeField] protected Transform firePoint;
     [SerializeField] protected float fireRate = 2f;
-    //public float spineSpeed = 100f;
+
     public GameObject coinPrefab;
     private BossHealth bossHealth;
     private Transform target;
-    //private bool isDefeated = false;
 
 
-
-    // Start is called before the first frame update
 
     public int Health
     {
@@ -31,27 +27,17 @@ public class PigBoss : MonoBehaviour, IDamageable
     void Start()
     {
             player = GameObject.FindGameObjectWithTag("Player");
-            if (player == null)
-            {
-                Debug.LogError("No se encuentra el player");
-            }
-            else
-            {
-                target = player.transform;
-            }
-
+        
+           target = player.transform;
+           
             GameManager gameManager = FindObjectOfType<GameManager>();
             if (gameManager != null)
             {
                 bossProjectile = gameManager.BossProjectilePrefab;
             }
 
-            // Find BossHealth component
             bossHealth = GetComponent<BossHealth>();
-            if (bossHealth == null)
-            {
-                Debug.LogError("PigBoss: BossHealth component not found!");
-            }
+        
     }
 
 
@@ -77,19 +63,7 @@ public class PigBoss : MonoBehaviour, IDamageable
 
     void Shoot()
     {
-        if (bossProjectile == null)
-        {
-            Debug.LogError("PigBoss: bossProjectile is not assigned!");
-            return;
-        }
-
-        if (projectilePos == null)
-        {
-            Debug.LogError("PigBoss: projectilePos is not assigned!");
-            return;
-        }
-
-
+     
         Vector3 direction = (player.transform.position - projectilePos.position).normalized;
 
 

@@ -29,11 +29,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected bool isGrounded;
 
 
-
-    //[Header("Patrol Points")]
-    //[SerializeField] private Transform leftEdge;
-    //[SerializeField] private Transform rightEdge;
-
     public int Health
     {
         get { return health; }
@@ -151,7 +146,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
         Debug.Log(gameObject.name + " died.");
         Destroy(gameObject);
-        //spawner.ReturnEnemyToPool(gameObject, enemyTypeName);
         Instantiate(coinPrefab, transform.position, Quaternion.identity);
 
     }

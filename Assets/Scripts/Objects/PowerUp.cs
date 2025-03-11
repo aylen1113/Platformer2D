@@ -8,14 +8,14 @@ public abstract class PowerUp : MonoBehaviour, ICollectable
 
     public void Collect()
     {
-        // Llamamos a PowerUpDuration pasando el PlayerMovement
+
         StartCoroutine(PowerUpDuration(GameObject.FindWithTag("Player").GetComponent<PlayerMovement>()));
         Destroy(gameObject);
     }
 
     public abstract void ApplyPowerup(PlayerMovement playerMovement);
 
-    // Implementación de PowerUpDuration desde la interfaz ICollectable
+  
     public IEnumerator PowerUpDuration(PlayerMovement playerMovement)
     {
         effectApplied = true;

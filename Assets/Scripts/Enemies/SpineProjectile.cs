@@ -7,7 +7,6 @@ public class SpineProjectile : MonoBehaviour
     private GameObject player;
 
 
-    //[SerializeField] private float speed = 10f;
     [SerializeField] private int damage = 10;
     private Rigidbody2D rb;
 
@@ -38,18 +37,6 @@ public class SpineProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
-    //    player = GameObject.FindGameObjectWithTag
-    //    rb = GetComponent<Rigidbody2D>();
-
-    //    if (rb != null)
-    //    {
-    //        rb.velocity = transform.right * speed; // Mueve el proyectil hacia adelante
-    //    }
-
-    //    Destroy(gameObject, 3f); // Se destruye después de 3 segundos
-    //}
 
     private void OnTriggerEnter2D(Collider2D other)
     {
