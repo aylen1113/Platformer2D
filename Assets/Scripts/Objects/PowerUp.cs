@@ -38,4 +38,5 @@ public abstract class PowerUp : MonoBehaviour, ICollectable
             Collect();
         }
     }
+
 }

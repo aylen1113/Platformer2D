@@ -4,7 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f; 
     public float jumpForce = 10f;
-    public float speed = 5f;
+    //public float speed = 5f;
     public bool grounded = true;
     private float moveInput;
 

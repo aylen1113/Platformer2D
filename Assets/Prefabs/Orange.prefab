@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1839826193868004000}
   - component: {fileID: 8077150928419411589}
-  - component: {fileID: -1219416310012025032}
   - component: {fileID: -6822429560565282146}
   - component: {fileID: -2476557706509181887}
+  - component: {fileID: 1833364663157426652}
   m_Layer: 0
   m_Name: Orange
   m_TagString: Untagged
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1219416310012025032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5191171326396102838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8313b8a6cbf11b428d78d936c6876a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedIncreaseAmount: 5
 --- !u!58 &-6822429560565282146
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -162,3 +149,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1833364663157426652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5191171326396102838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f319b29a4bd26e429571a7e68f4fef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duracionDeEfecto: 5
+  jugador: {fileID: 0}
+  valorAgregado: 5
+  efectoActivado: 0
+  spriteRenderer: {fileID: 8077150928419411589}

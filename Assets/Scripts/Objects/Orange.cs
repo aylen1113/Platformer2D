@@ -7,12 +7,12 @@ public class Orange : PowerUp
 
     public override void ApplyPowerup(PlayerMovement playerMovement)
     {
-        originalSpeed = playerMovement.speed; // Store the original speed
-        playerMovement.speed *= speedMultiplier; // Increase speed by the multiplier
+        //originalSpeed = playerMovement.speed; // Store the original speed
+        playerMovement.moveSpeed *= speedMultiplier; // Increase speed by the multiplier
     }
 
     protected override void RemovePowerup(PlayerMovement playerMovement)
     {
-        playerMovement.speed = originalSpeed; // Revert to the original speed
+        playerMovement.moveSpeed = originalSpeed; // Revert to the original speed
     }
 }
