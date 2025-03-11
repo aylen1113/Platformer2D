@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
-        //anim = GetComponent<Animator>();
+
         playerMovement = GetComponent<PlayerMovement>();
     }
 
@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        //anim.SetTrigger("attack");
+
         cooldownTimer = 0;
 
         fireballs[FindFireball()].transform.position = firePoint.position;

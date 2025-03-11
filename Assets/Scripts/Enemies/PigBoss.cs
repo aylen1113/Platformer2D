@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,13 +36,10 @@ public class PigBoss : MonoBehaviour, IDamageable
             }
 
             bossHealth = GetComponent<BossHealth>();
-        
     }
-
 
     void Update()
     {
-
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
@@ -56,9 +52,7 @@ public class PigBoss : MonoBehaviour, IDamageable
                 fireRate = 0;
                 Shoot();
             }
-
         }
-
     }
 
     void Shoot()
@@ -66,12 +60,9 @@ public class PigBoss : MonoBehaviour, IDamageable
      
         Vector3 direction = (player.transform.position - projectilePos.position).normalized;
 
-
         GameObject projectile = Instantiate(bossProjectile, projectilePos.position, Quaternion.identity);
 
-
         projectile.transform.right = direction;
-
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         if (rb != null)
